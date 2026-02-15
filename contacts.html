@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакты | ComicStar</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/grids-responsive-min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        .header {
+            background: #1a1a1a;
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+        
+        .header .pure-menu-link {
+            color: white;
+            transition: color 0.3s;
+        }
+        
+        .header .pure-menu-link:hover {
+            color: #ff6b6b;
+            background: transparent;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #ff6b6b !important;
+        }
+        
+        .main-content {
+            margin-top: 80px;
+            min-height: calc(100vh - 80px - 300px);
+            padding: 2rem;
+        }
+        
+        .active {
+            color: #ff6b6b !important;
+        }
+        
+        .contacts-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .contacts-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .contact-info {
+            background: #f9f9f9;
+            padding: 2rem;
+            border-radius: 10px;
+            height: 100%;
+        }
+        
+        .contact-item {
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-item i {
+            color: #ff6b6b;
+            width: 30px;
+        }
+        
+        .contact-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: inherit;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #ff6b6b;
+        }
+        
+        .checkbox {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .checkbox input {
+            width: auto;
+        }
+        
+        .submit-button {
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.3s;
+        }
+        
+        .submit-button:hover {
+            background: #ff5252;
+        }
+        
+        .footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 3rem 2rem;
+            margin-top: 2rem;
+        }
+        
+        .footer a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            color: #ff6b6b;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="pure-menu pure-menu-horizontal pure-menu-scrollable">
+            <div class="pure-g">
+                <div class="pure-u-1 pure-u-md-1-3">
+                    <a href="index.html" class="pure-menu-heading pure-menu-link logo">ComicStar</a>
+                </div>
+                <div class="pure-u-1 pure-u-md-2-3">
+                    <ul class="pure-menu-list">
+                        <li class="pure-menu-item"><a href="index.html" class="pure-menu-link">Главная</a></li>
+                        <li class="pure-menu-item"><a href="catalog.html" class="pure-menu-link">Каталог</a></li>
+                        <li class="pure-menu-item"><a href="marvel/ultimate-spider-man.html" class="pure-menu-link">Marvel</a></li>
+                        <li class="pure-menu-item"><a href="dc/" class="pure-menu-link">DC</a></li>
+                        <li class="pure-menu-item"><a href="faq.html" class="pure-menu-link">FAQ</a></li>
+                        <li class="pure-menu-item"><a href="contacts.html" class="pure-menu-link active">Контакты</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="contacts-header">
+            <h1 class="contacts-title">Свяжитесь с нами</h1>
+            <p>Мы всегда рады вашим вопросам и предложениям</p>
+        </div>
+
+        <div class="pure-g" style="max-width: 1200px; margin: 0 auto;">
+            <div class="pure-u-1 pure-u-md-1-2" style="padding: 1rem;">
+                <div class="contact-info">
+                    <h2 style="margin-bottom: 2rem;">Наши контакты</h2>
+                    
+                    <div class="contact-item">
+                        <p><i class="fas fa-map-marker-alt"></i> Москва, ул. Тверская, д. 7</p>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <p><i class="fas fa-phone"></i> +7 (999) 123-45-67</p>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <p><i class="fas fa-envelope"></i> info@comicstar.ru</p>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <p><i class="fas fa-clock"></i> Пн-Пт: 10:00 - 19:00</p>
+                    </div>
+                    
+                    <div style="margin-top: 2rem;">
+                        <h3>Мы в соцсетях</h3>
+                        <div style="font-size: 2rem; margin-top: 1rem;">
+                            <a href="#" style="color: #333; margin-right: 1rem;"><i class="fab fa-vk"></i></a>
+                            <a href="#" style="color: #333; margin-right: 1rem;"><i class="fab fa-telegram"></i></a>
+                            <a href="#" style="color: #333; margin-right: 1rem;"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="pure-u-1 pure-u-md-1-2" style="padding: 1rem;">
+                <div class="contact-form">
+                    <h2 style="margin-bottom: 2rem;">Напишите нам</h2>
+                    
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label>Имя *</label>
+                            <input type="text" placeholder="Ваше имя" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Email *</label>
+                            <input type="email" placeholder="example@email.com" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Тема</label>
+                            <select>
+                                <option>Вопрос о работе сайта</option>
+                                <option>Предложение по добавлению комиксов</option>
+                                <option>Сотрудничество</option>
+                                <option>Жалоба</option>
+                                <option>Другое</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Сообщение *</label>
+                            <textarea rows="5" placeholder="Ваше сообщение..." required></textarea>
+                        </div>
+                        
+                        <div class="form-group checkbox">
+                            <input type="checkbox" required>
+                            <label>Согласен на обработку персональных данных</label>
+                        </div>
+                        
+                        <button type="submit" class="submit-button">Отправить сообщение</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="pure-g">
+            <div class="pure-u-1 pure-u-md-1-3">
+                <h4>ComicStar</h4>
+                <p>Онлайн библиотека комиксов. Читай бесплатно, где угодно.</p>
+            </div>
+            <div class="pure-u-1 pure-u-md-1-3">
+                <h4>Навигация</h4>
+                <ul style="list-style: none; padding: 0;">
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="catalog.html">Каталог</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="contacts.html">Контакты</a></li>
+                </ul>
+            </div>
+            <div class="pure-u-1 pure-u-md-1-3">
+                <h4>Контакты</h4>
+                <p>info@comicstar.ru</p>
+                <p>&copy; 2025 ComicStar</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Спасибо за сообщение! Мы ответим вам в ближайшее время.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>

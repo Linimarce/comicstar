@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ | ComicStar</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/grids-responsive-min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        .header {
+            background: #1a1a1a;
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+        
+        .header .pure-menu-link {
+            color: white;
+            transition: color 0.3s;
+        }
+        
+        .header .pure-menu-link:hover {
+            color: #ff6b6b;
+            background: transparent;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #ff6b6b !important;
+        }
+        
+        .main-content {
+            margin-top: 80px;
+            min-height: calc(100vh - 80px - 300px);
+            padding: 2rem;
+        }
+        
+        .active {
+            color: #ff6b6b !important;
+        }
+        
+        .faq-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .faq-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .faq-item {
+            background: #f9f9f9;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            padding: 1.5rem;
+        }
+        
+        .faq-question {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #333;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .faq-question:hover {
+            color: #ff6b6b;
+        }
+        
+        .faq-answer {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #ddd;
+            color: #666;
+        }
+        
+        .footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 3rem 2rem;
+            margin-top: 2rem;
+        }
+        
+        .footer a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer a:hover {
+            color: #ff6b6b;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="pure-menu pure-menu-horizontal pure-menu-scrollable">
+            <div class="pure-g">
+                <div class="pure-u-1 pure-u-md-1-3">
+                    <a href="index.html" class="pure-menu-heading pure-menu-link logo">ComicStar</a>
+                </div>
+                <div class="pure-u-1 pure-u-md-2-3">
+                    <ul class="pure-menu-list">
+                        <li class="pure-menu-item"><a href="index.html" class="pure-menu-link">Главная</a></li>
+                        <li class="pure-menu-item"><a href="catalog.html" class="pure-menu-link">Каталог</a></li>
+                        <li class="pure-menu-item"><a href="marvel/ultimate-spider-man.html" class="pure-menu-link">Marvel</a></li>
+                        <li class="pure-menu-item"><a href="dc/" class="pure-menu-link">DC</a></li>
+                        <li class="pure-menu-item"><a href="faq.html" class="pure-menu-link active">FAQ</a></li>
+                        <li class="pure-menu-item"><a href="contacts.html" class="pure-menu-link">Контакты</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="faq-header">
+            <h1 class="faq-title">Часто задаваемые вопросы</h1>
+            <p>Ответы на самые популярные вопросы о ComicStar</p>
+        </div>
+
+        <div style="max-width: 800px; margin: 0 auto;">
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleAnswer(this)">
+                    <span>Что такое ComicStar?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer" style="display: none;">
+                    ComicStar — это онлайн-библиотека комиксов. Мы собираем культовые серии и новые релизы, чтобы вы могли читать их бесплатно в удобном формате.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleAnswer(this)">
+                    <span>Это легально?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer" style="display: none;">
+                    Да, мы работаем в сотрудничестве с правообладателями. Весь контент предоставлен легально.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleAnswer(this)">
+                    <span>Почему некоторые разделы не работают?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer" style="display: none;">
+                    Мы активно развиваем проект. Сейчас полностью доступен раздел Ultimate Marvel. DC, Image и другие издательства будут добавлены позже.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleAnswer(this)">
+                    <span>Нужна регистрация?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer" style="display: none;">
+                    Регистрация не обязательна для чтения, но с аккаунтом вы сможете сохранять прогресс и добавлять комиксы в библиотеку.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleAnswer(this)">
+                    <span>Как читать на телефоне?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer" style="display: none;">
+                    Наш сайт полностью адаптирован для мобильных устройств. Просто откройте его в браузере вашего телефона.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="pure-g">
+            <div class="pure-u-1 pure-u-md-1-3">
+                <h4>ComicStar</h4>
+                <p>Онлайн библиотека комиксов. Читай бесплатно, где угодно.</p>
+            </div>
+            <div class="pure-u-1 pure-u-md-1-3">
+                <h4>Навигация</h4>
+                <ul style="list-style: none; padding: 0;">
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="catalog.html">Каталог</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="contacts.html">Контакты</a></li>
+                </ul>
+            </div>
+            <div class="pure-u-1 pure-u-md-1-3">
+                <h4>Контакты</h4>
+                <p>info@comicstar.ru</p>
+                <p>&copy; 2025 ComicStar</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleAnswer(element) {
+            const answer = element.nextElementSibling;
+            const icon = element.querySelector('i');
+            
+            if (answer.style.display === 'none') {
+                answer.style.display = 'block';
+                icon.classList.remove('fa-chevron-down');
+                icon.classList.add('fa-chevron-up');
+            } else {
+                answer.style.display = 'none';
+                icon.classList.remove('fa-chevron-up');
+                icon.classList.add('fa-chevron-down');
+            }
+        }
+    </script>
+</body>
+</html>

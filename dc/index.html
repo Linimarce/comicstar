@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Раздел в разработке | ComicStar</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/grids-responsive-min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .error-container {
+            background: white;
+            border-radius: 20px;
+            padding: 4rem 2rem;
+            text-align: center;
+            max-width: 600px;
+            margin: 2rem;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        .error-code {
+            font-size: 8rem;
+            font-weight: bold;
+            color: #ff6b6b;
+            line-height: 1;
+            margin-bottom: 1rem;
+            text-shadow: 5px 5px 0 rgba(255,107,107,0.2);
+        }
+        
+        .error-icon {
+            font-size: 5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .error-title {
+            font-size: 2rem;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+        
+        .error-message {
+            color: #666;
+            margin-bottom: 2rem;
+            font-size: 1.2rem;
+        }
+        
+        .error-note {
+            background: #f0f0f0;
+            padding: 1rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+            color: #555;
+        }
+        
+        .error-actions {
+            margin: 2rem 0;
+        }
+        
+        .pure-button {
+            margin: 0.5rem;
+        }
+        
+        .pure-button-primary {
+            background: #ff6b6b;
+            color: white;
+        }
+        
+        .nav-links {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #eee;
+        }
+        
+        .nav-links a {
+            color: #ff6b6b;
+            text-decoration: none;
+            margin: 0 1rem;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #ff5252;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <div class="error-code">404</div>
+        <div class="error-icon">🦇</div>
+        <h1 class="error-title">Раздел DC в разработке!</h1>
+        <p class="error-message">Мы активно работаем над добавлением комиксов DC в нашу библиотеку. Скоро здесь появятся Бэтмен, Супермен и вся Лига Справедливости!</p>
+        
+        <div class="error-note">
+            <i class="fas fa-lightbulb" style="color: #f1c40f;"></i>
+            <p style="margin-top: 0.5rem;">А пока вы можете почитать комиксы Marvel Ultimate, которые уже доступны в нашем каталоге.</p>
+        </div>
+        
+        <div class="error-actions">
+            <a href="../catalog.html" class="pure-button pure-button-primary">
+                <i class="fas fa-book-open"></i> Перейти в каталог
+            </a>
+            <a href="../index.html" class="pure-button" style="background: #f0f0f0;">
+                <i class="fas fa-home"></i> На главную
+            </a>
+        </div>
+        
+        <div class="nav-links">
+            <a href="../index.html">Главная</a>
+            <a href="../catalog.html">Каталог</a>
+            <a href="../faq.html">FAQ</a>
+            <a href="../contacts.html">Контакты</a>
+        </div>
+        
+        <p style="margin-top: 2rem; color: #999; font-size: 0.9rem;">
+            Хотите ускорить выход раздела? <a href="../contacts.html" style="color: #ff6b6b;">Напишите нам</a>, какие комиксы добавить в первую очередь!
+        </p>
+    </div>
+</body>
+</html>

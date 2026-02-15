@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Каталог комиксов | ComicStar</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/grids-responsive-min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <style>
+        /* Копируем все стили из index.html, добавляем специфичные для каталога */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        .header {
+            background: #1a1a1a;
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .header .pure-menu {
+            background: transparent;
+            border: none;
+        }
+        
+        .header .pure-menu-link {
+            color: white;
+            transition: color 0.3s;
+        }
+        
+        .header .pure-menu-link:hover {
+            color: #ff6b6b;
+            background: transparent;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #ff6b6b !important;
+        }
+        
+        .main-content {
+            margin-top: 80px;
+            min-height: calc(100vh - 80px - 300px);
+        }
+        
+        .active {
+            color: #ff6b6b !important;
+        }
+        
+        .catalog-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+        
+        .catalog-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .filters {
+            background: #f5f5f5;
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+        }
+        
+        .filter-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .filter-group h3 {
+            margin-bottom: 1rem;
+            color: #333;
+        }
+        
+        .filter-checkbox {
+            margin-right: 1rem;
+            margin-bottom: 0.5rem;
+            display: inline-block;
+        }
+        
+        .comic-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            margin-bottom: 2rem;
+        }
+        
+        .comic-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .comic-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            background: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+        }
+        
+        .comic-info {
+            padding: 1.5rem;
+        }
+        
+        .comic-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+        
+        .comic-publisher {
+            color: #ff6b6b;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .comic-rating {
+            color: #f1c40f;
+            margin-bottom: 0.5rem;
+        }
+        
+        .comic-description {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .comic-button {
+            display: inline-block;
+            background: #ff6b6b;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: background 0.3s;
+        }
+        
+        .comic-button:hover {
+            background: #ff5252;
+        }
+        
+        .pagination {
+            text-align: center;
+            margin: 2rem 0;
+        }
+        
+        .pagination a {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            margin: 0 0.25rem;
+            background: #f5f5f5;
+            color: #333;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        
+        .pagination a:hover, .pagination a.active {
+            background: #ff6b6b;
+            color: white;
+        }
+        
+        .footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 3rem 2rem;
+            margin-top: 2rem;
+        }
+        
+        .footer a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer a:hover {
+            color: #ff6b6b;
+        }
+        
+        .social-icons {
+            font-size: 1.5rem;
+            margin-top: 1rem;
+        }
+        
+        .social-icons a {
+            margin-right: 1rem;
+        }
+        
+        @media (max-width: 48em) {
+            .catalog-title {
+                font-size: 2rem;
+            }
+            
+            .filters {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Хедер -->
+    <div class="header">
+        <div class="pure-menu pure-menu-horizontal pure-menu-scrollable">
+            <div class="pure-g">
+                <div class="pure-u-1 pure-u-md-1-3">
+                    <a href="index.html" class="pure-menu-heading pure-menu-link logo">ComicStar</a>
+                </div>
+                <div class="pure-u-1 pure-u-md-2-3">
+                    <ul class="pure-menu-list">
+                        <li class="pure-menu-item"><a href="index.html" class="pure-menu-link">Главная</a></li>
+                        <li class="pure-menu-item"><a href="catalog.html" class="pure-menu-link active">Каталог</a></li>
+                        <li class="pure-menu-item"><a href="marvel/ultimate-spider-man.html" class="pure-menu-link">Marvel</a></li>
+                        <li class="pure-menu-item"><a href="dc/" class="pure-menu-link">DC</a></li>
+                        <li class="pure-menu-item"><a href="faq.html" class="pure-menu-link">FAQ</a></li>
+                        <li class="pure-menu-item"><a href="contacts.html" class="pure-menu-link">Контакты</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <!-- Заголовок каталога -->
+        <div class="catalog-header">
+            <div class="pure-g">
+                <div class="pure-u-1 pure-u-md-2-3" style="margin: 0 auto;">
+                    <h1 class="catalog-title">Каталог комиксов</h1>
+                    <p>В нашей библиотеке: <strong>156 серий</strong> и <strong>1,245 выпусков</strong></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="pure-g" style="max-width: 1200px; margin: 0 auto; padding: 0 1rem;">
+            <!-- Фильтры (сайдбар) -->
+            <div class="pure-u-1 pure-u-md-1-4">
+                <div class="filters">
+                    <h3>Фильтры</h3>
+                    
+                    <div class="filter-group">
+                        <h4>Поиск</h4>
+                        <input type="text" class="pure-input-1" placeholder="Название комикса...">
+                    </div>
+                    
+                    <div class="filter-group">
+                        <h4>Издательство</h4>
+                        <div class="filter-checkbox">
+                            <label><input type="checkbox"> Marvel (42)</label>
+                        </div>
+                        <div class="filter-checkbox">
+                            <label><input type="checkbox"> DC (38)</label>
+                        </div>
+                        <div class="filter-checkbox">
+                            <label><input type="checkbox"> Image (24)</label>
+                        </div>
+                        <div class="filter-checkbox">
+                            <label><input type="checkbox"> Dark Horse (18)</label>
+                        </div>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <h4>Жанры</h4>
+                        <div class="filter-checkbox">
+                            <label><input type="checkbox"> Супергероика (64)</label>
+                        </div>
+                        <div class="filter-checkbox">
+                            <label><input type="checkbox"> Фантастика (42)</label>
+                        </div>
+                        <div class="filter-checkbox">
+                            <label><input type="checkbox"> Ужасы (23)</label>
+                        </div>
+                        <div class="filter-checkbox">
+                            <label><input type="checkbox"> Детектив (31)</label>
+                        </div>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <h4>Статус перевода</h4>
+                        <div class="filter-checkbox">
+                            <label><input type="checkbox"> Завершен (89)</label>
+                        </div>
+                        <div class="filter-checkbox">
+                            <label><input type="checkbox"> Переводится (45)</label>
+                        </div>
+                        <div class="filter-checkbox">
+                            <label><input type="checkbox"> Заморожен (22)</label>
+                        </div>
+                    </div>
+                    
+                    <button class="pure-button pure-button-primary" style="width: 100%; background: #ff6b6b;">Применить</button>
+                </div>
+            </div>
+            
+            <!-- Сетка комиксов -->
+            <div class="pure-u-1 pure-u-md-3-4" style="padding-left: 1rem;">
+                <!-- Сортировка -->
+                <div style="margin-bottom: 1rem; text-align: right;">
+                    <label>Сортировка:</label>
+                    <select style="padding: 0.5rem; border-radius: 5px;">
+                        <option>По популярности</option>
+                        <option>По дате обновления</option>
+                        <option>По алфавиту</option>
+                    </select>
+                </div>
+                
+                <!-- Карточки комиксов -->
+                <div class="pure-g">
+                    <!-- Ultimate Spider-Man -->
+                    <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+                        <div class="comic-card">
+                            <div class="comic-image" style="background: #e74c3c; color: white;">
+                                <span style="font-size: 3rem;">🕷️</span>
+                            </div>
+                            <div class="comic-info">
+                                <h3 class="comic-title">Ultimate Spider-Man</h3>
+                                <p class="comic-publisher">Marvel</p>
+                                <div class="comic-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                    (4.5)
+                                </div>
+                                <p class="comic-description">Новое начало легенды о Человеке-пауке. Питер Паркер только получает свои силы...</p>
+                                <a href="marvel/ultimate-spider-man.html" class="comic-button">Читать</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Ultimate X-Men -->
+                    <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+                        <div class="comic-card">
+                            <div class="comic-image" style="background: #3498db; color: white;">
+                                <span style="font-size: 3rem;">⚡</span>
+                            </div>
+                            <div class="comic-info">
+                                <h3 class="comic-title">Ultimate X-Men</h3>
+                                <p class="comic-publisher">Marvel</p>
+                                <div class="comic-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    (5.0)
+                                </div>
+                                <p class="comic-description">Профессор Ксавьер собирает новых мутантов в школе для одарённых подростков...</p>
+                                <a href="404.html?from=xmen" class="comic-button">Читать</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Ultimate Fantastic Four -->
+                    <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+                        <div class="comic-card">
+                            <div class="comic-image" style="background: #2ecc71; color: white;">
+                                <span style="font-size: 3rem;">🔥</span>
+                            </div>
+                            <div class="comic-info">
+                                <h3 class="comic-title">Ultimate Fantastic Four</h3>
+                                <p class="comic-publisher">Marvel</p>
+                                <div class="comic-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                    (4.3)
+                                </div>
+                                <p class="comic-description">Молодые гении получают суперсилы после неудачного эксперимента...</p>
+                                <a href="404.html?from=fantasticfour" class="comic-button">Читать</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Batman: Year One -->
+                    <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+                        <div class="comic-card">
+                            <div class="comic-image" style="background: #2c3e50; color: white;">
+                                <span style="font-size: 3rem;">🦇</span>
+                            </div>
+                            <div class="comic-info">
+                                <h3 class="comic-title">Batman: Year One</h3>
+                                <p class="comic-publisher">DC</p>
+                                <div class="comic-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    (4.9)
+                                </div>
+                                <p class="comic-description">Начало пути Тёмного рыцаря. Возвращение Брюса Уэйна в Готэм...</p>
+                                <a href="dc/" class="comic-button">Читать</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Watchmen -->
+                    <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+                        <div class="comic-card">
+                            <div class="comic-image" style="background: #f39c12; color: white;">
+                                <span style="font-size: 3rem;">⏰</span>
+                            </div>
+                            <div class="comic-info">
+                                <h3 class="comic-title">Watchmen</h3>
+                                <p class="comic-publisher">DC</p>
+                                <div class="comic-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    (5.0)
+                                </div>
+                                <p class="comic-description">Альтернативная история, где супергерои стали изгоями...</p>
+                                <a href="dc/" class="comic-button">Читать</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- The Walking Dead -->
+                    <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+                        <div class="comic-card">
+                            <div class="comic-image" style="background: #7f8c8d; color: white;">
+                                <span style="font-size: 3rem;">🧟</span>
+                            </div>
+                            <div class="comic-info">
+                                <h3 class="comic-title">The Walking Dead</h3>
+                                <p class="comic-publisher">Image</p>
+                                <div class="comic-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                    (4.7)
+                                </div>
+                                <p class="comic-description">Постапокалипсис. Выживание в мире, населённом зомби...</p>
+                                <a href="404.html?from=twd" class="comic-button">Читать</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Пагинация -->
+                <div class="pagination">
+                    <a href="#" class="active">1</a>
+                    <a href="#">2</a>
+                    <a href="#">3</a>
+                    <a href="#">4</a>
+                    <a href="#">5</a>
+                    <a href="#">...</a>
+                    <a href="#">10</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Футер -->
+    <div class="footer">
+        <div class="pure-g">
+            <div class="pure-u-1 pure-u-md-1-3">
+                <h4>ComicStar</h4>
+                <p>Онлайн библиотека комиксов. Читай бесплатно, где угодно.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-vk"></i></a>
+                    <a href="#"><i class="fab fa-telegram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="pure-u-1 pure-u-md-1-3">
+                <h4>Навигация</h4>
+                <ul style="list-style: none; padding: 0;">
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="catalog.html">Каталог</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="contacts.html">Контакты</a></li>
+                </ul>
+            </div>
+            <div class="pure-u-1 pure-u-md-1-3">
+                <h4>Контакты</h4>
+                <p><i class="fas fa-envelope"></i> info@comicstar.ru</p>
+                <p><i class="fas fa-phone"></i> +7 (999) 123-45-67</p>
+                <p>&copy; 2025 ComicStar. Все права защищены.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
